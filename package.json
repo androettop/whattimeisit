@@ -16,7 +16,8 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build"
+    "build": "react-scripts build",
+    "deploy": "surge ./build --domain whattimeisit.surge.sh"
   },
   "eslintConfig": {
     "extends": [
@@ -36,6 +37,7 @@
     ]
   },
   "devDependencies": {
-    "prettier": "^3.0.2"
+    "prettier": "^3.0.2",
+    "surge": "^0.23.1"
   }
 }
