@@ -17,7 +17,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "deploy": "surge ./build --domain whattimeisit.surge.sh"
+    "deploy": "surge ./build --domain https://whattimeisit.surge.sh"
   },
   "eslintConfig": {
     "extends": [
