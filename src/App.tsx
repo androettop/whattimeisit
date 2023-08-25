@@ -30,9 +30,17 @@ function App() {
       // replace the placeholder with the corresponding value
       switch (part) {
         case "time":
-          return <span className="accent">{time}</span>;
+          return (
+            <span key={index} className="accent">
+              {time}
+            </span>
+          );
         case "country":
-          return <span className="accent">{country}</span>;
+          return (
+            <span key={index} className="accent">
+              {country}
+            </span>
+          );
         default:
           return null;
       }
