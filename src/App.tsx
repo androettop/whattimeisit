@@ -13,13 +13,13 @@ function App() {
   const time = country === NO_COUNTRY ? "18:00" : getTimeOfTimezone(timezone);
 
   const randomPhrase = phrases[Math.floor(Math.random() * phrases.length)];
-  // split the phrase into an array of parts
+
   const parts = randomPhrase.split("%");
 
-  const isArgMode = ['argentina', 'falkland islands'].includes(country.toLowerCase());
+  const isArgMode = ["argentina", "islas malvinas"].includes(
+    country.toLowerCase(),
+  );
 
-  
-  // create an array of JSX elements
   const elements = parts.map((part, index) => {
     // if the part is even, it's a string
     if (index % 2 === 0) {
@@ -40,9 +40,11 @@ function App() {
   });
 
   return (
-    <div className={`message-container ${isArgMode ? 'arg' : ''}`}>
-      <h2 className="accent">What time is it?</h2>
-      <h1>{elements}</h1>
+    <div className={`container ${isArgMode ? "argMode" : ""}`}>
+      <div className={`message-container`}>
+        <h2 className="accent">What time is it?</h2>
+        <h1>{elements}</h1>
+      </div>
     </div>
   );
 }
