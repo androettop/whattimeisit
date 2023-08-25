@@ -41,8 +41,16 @@ h1 {
   white-space: pre-line;
 }
 
-.green {
+.accent {
   color: #67bc00;
+}
+
+.arg {
+  color: white;
+}
+
+.arg .accent{
+  color: #13a0ff;
 }
 
 /* media queries */

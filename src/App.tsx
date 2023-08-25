@@ -15,6 +15,9 @@ function App() {
   const randomPhrase = phrases[Math.floor(Math.random() * phrases.length)];
   // split the phrase into an array of parts
   const parts = randomPhrase.split("%");
+
+  const isArgMode = ['argentina', 'falkland islands'].includes(country.toLowerCase());
+
   
   // create an array of JSX elements
   const elements = parts.map((part, index) => {
@@ -27,9 +30,9 @@ function App() {
       // replace the placeholder with the corresponding value
       switch (part) {
         case "time":
-          return <span className="green">{time}</span>;
+          return <span className="accent">{time}</span>;
         case "country":
-          return <span className="green">{country}</span>;
+          return <span className="accent">{country}</span>;
         default:
           return null;
       }
@@ -37,8 +40,8 @@ function App() {
   });
 
   return (
-    <div className="message-container">
-      <h2 className="green">What time is it?</h2>
+    <div className={`message-container ${isArgMode ? 'arg' : ''}`}>
+      <h2 className="accent">What time is it?</h2>
       <h1>{elements}</h1>
     </div>
   );
