@@ -13,10 +13,13 @@ function App() {
   const time = country === NO_COUNTRY ? "18:00" : getTimeOfTimezone(timezone);
 
   const randomPhrase = phrases[Math.floor(Math.random() * phrases.length)];
-  // split the phrase into an array of parts
+
   const parts = randomPhrase.split("%");
-  
-  // create an array of JSX elements
+
+  const isArgMode = ["argentina", "islas malvinas"].includes(
+    country.toLowerCase(),
+  );
+
   const elements = parts.map((part, index) => {
     // if the part is even, it's a string
     if (index % 2 === 0) {
@@ -27,9 +30,17 @@ function App() {
       // replace the placeholder with the corresponding value
       switch (part) {
         case "time":
-          return <span className="green">{time}</span>;
+          return (
+            <span key={index} className="accent">
+              {time}
+            </span>
+          );
         case "country":
-          return <span className="green">{country}</span>;
+          return (
+            <span key={index} className="accent">
+              {country}
+            </span>
+          );
         default:
           return null;
       }
@@ -37,9 +48,11 @@ function App() {
   });
 
   return (
-    <div className="message-container">
-      <h2 className="green">What time is it?</h2>
-      <h1>{elements}</h1>
+    <div className={`container ${isArgMode ? "argMode" : ""}`}>
+      <div className={`message-container`}>
+        <h2 className="accent">What time is it?</h2>
+        <h1>{elements}</h1>
+      </div>
     </div>
   );
 }

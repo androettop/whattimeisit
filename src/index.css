@@ -13,15 +13,19 @@ body {
   background-color: #f7ffed;
 }
 
+.container,
 .message-container {
   width: 100%;
-  max-width: 1400px;  
   height: 100%;
-  margin: auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.message-container {
+  max-width: 1400px;
+  margin: auto;
 }
 
 h2 {
@@ -41,8 +45,24 @@ h1 {
   white-space: pre-line;
 }
 
-.green {
+.accent {
   color: #67bc00;
+}
+
+.argMode {
+  background-image: url("./assets/arg.gif");
+  background-size: cover;
+  background-position: center;
+}
+
+.argMode .accent {
+  color: #13a0ff;
+}
+
+.argMode h1,
+.argMode h2 {
+  text-shadow: 0 0 10px #323232;
+  color: white;
 }
 
 /* media queries */
