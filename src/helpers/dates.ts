@@ -1,5 +1,6 @@
 import moment from "moment-timezone";
 import momentData from "moment-timezone/data/meta/latest.json";
+import { MAGIC_NUMBER, NO_COUNTRY } from "./consts";
 
 const zones = momentData.zones as Record<string, { countries: string[] }>;
 const countries = momentData.countries as Record<
@@ -8,13 +9,30 @@ const countries = momentData.countries as Record<
 >;
 const zonesNames = Object.keys(zones);
 
-export const NO_COUNTRY = "Narnia";
-
 export const get6PMTimezone = () => {
+  const addedCountries: string[] = [];
   const timezones = zonesNames.filter((name) => {
     const time = moment().tz(name).format("HH");
+    const zone = zones[name] || { countries: [""] };
+    const country = countries[zone.countries?.[0]]?.name || NO_COUNTRY;
 
-    return !name.startsWith("Etc/") && time === "18";
+    // Filter Etc/ timezones
+    if (name.startsWith("Etc/")) {
+      return false;
+    }
+
+    // Filter sad timezones
+    if (time !== MAGIC_NUMBER) {
+      return false;
+    }
+
+    // Filter countries that are already added
+    if (addedCountries.includes(country)) {
+      return false;
+    }
+
+    addedCountries.push(country);
+    return true;
   });
 
   const randomTimezone =
