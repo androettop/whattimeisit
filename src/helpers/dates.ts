@@ -1,6 +1,11 @@
-import moment from "moment-timezone";
+import dayjs from "dayjs";
+import timezone from "dayjs/plugin/timezone";
+import utc from "dayjs/plugin/utc";
 import momentData from "moment-timezone/data/meta/latest.json";
 import { MAGIC_NUMBER, NO_COUNTRY } from "./consts";
+
+dayjs.extend(timezone);
+dayjs.extend(utc);
 
 const zones = momentData.zones as Record<string, { countries: string[] }>;
 const countries = momentData.countries as Record<
@@ -12,7 +17,7 @@ const zonesNames = Object.keys(zones);
 export const get6PMTimezone = () => {
   const addedCountries: string[] = [];
   const timezones = zonesNames.filter((name) => {
-    const time = moment().tz(name).format("HH");
+    const time = dayjs().tz(name).format("HH");
     const zone = zones[name] || { countries: [""] };
     const country = countries[zone.countries?.[0]]?.name || NO_COUNTRY;
 
@@ -41,7 +46,7 @@ export const get6PMTimezone = () => {
 };
 
 export const getTimeOfTimezone = (timezone: string) => {
-  const time = moment().tz(timezone).format("HH:mm");
+  const time = dayjs().tz(timezone).format("HH:mm");
 
   return time;
 };
