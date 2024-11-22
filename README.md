@@ -13,4 +13,4 @@ Welcome to the "What Time Is It" project repository. In this groundbreaking ende
 
 Curious to witness this marvel in action? Experience the time-telling sensation right now by visiting our [live demo](https://whattimeisit.surge.sh/). You'll be left in awe at how we've managed to capture the essence of the very concept of time in a single web page.
 
-![image](https://github.com/androettop/whattimeisit/assets/17651502/e86672ad-4f4c-4b5f-9e52-873c042d0d8b)
+![image](https://github.com/user-attachments/assets/ff032283-b6ae-4843-8f01-85cce42ad1ca)
