@@ -7,6 +7,7 @@ import {
 import { phrases } from "./helpers/phrases";
 import { MAGIC_NUMBER, NO_COUNTRY } from "./helpers/consts";
 import { getRandomPhrase } from "./helpers/random";
+import { throttle } from "./helpers/throttle";
 
 function App() {
   const [timezone, setTimezone] = useState<string>(get6PMTimezone());
@@ -55,11 +56,16 @@ function App() {
     setTimezone(get6PMTimezone());
   };
 
+  const throttledHandleChangePhraseAndTimezone = throttle(
+    handleChangePhraseAndTimezone,
+    100,
+  );
+
   useEffect(() => {
     const phraseChangeHandler = (event: KeyboardEvent) => {
       if (event.code === "Space") {
         event.preventDefault();
-        handleChangePhraseAndTimezone();
+        throttledHandleChangePhraseAndTimezone();
       }
     };
     window.addEventListener("keydown", phraseChangeHandler);
