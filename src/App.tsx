@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   get6PMTimezone,
   getCountryOfTimezone,
@@ -6,14 +6,16 @@ import {
 } from "./helpers/dates";
 import { phrases } from "./helpers/phrases";
 import { MAGIC_NUMBER, NO_COUNTRY } from "./helpers/consts";
+import { getRandomPhrase } from "./helpers/random";
 
 function App() {
-  const timezone = get6PMTimezone();
+  const [timezone, setTimezone] = useState<string>(get6PMTimezone());
+  const [randomPhrase, setRandomPhrase] = useState<string>(getRandomPhrase());
+
   const country = getCountryOfTimezone(timezone);
+
   const time =
     country === NO_COUNTRY ? `${MAGIC_NUMBER}:00` : getTimeOfTimezone(timezone);
-
-  const randomPhrase = phrases[Math.floor(Math.random() * phrases.length)];
 
   const parts = randomPhrase.split("%");
 
@@ -48,11 +50,38 @@ function App() {
     }
   });
 
+  const handleChangePhraseAndTimezone = () => {
+    setRandomPhrase(getRandomPhrase());
+    setTimezone(get6PMTimezone());
+  };
+
+  useEffect(() => {
+    const phraseChangeHandler = (event: KeyboardEvent) => {
+      if (event.code === "Space") {
+        event.preventDefault();
+        handleChangePhraseAndTimezone();
+      }
+    };
+    window.addEventListener("keydown", phraseChangeHandler);
+
+    return () => {
+      window.removeEventListener("keydown", phraseChangeHandler);
+    };
+  }, []);
+
   return (
     <div className={`container ${isArgMode ? "argMode" : ""}`}>
       <div className={`message-container`}>
         <h2 className="accent">What time is it?</h2>
         <h1>{elements}</h1>
+        <p
+          className="change-phrase"
+          role="button"
+          tabIndex={0}
+          onClick={handleChangePhraseAndTimezone}
+        >
+          Hit <span className="change-btn">Space</span> or Click
+        </p>
       </div>
       <footer>
         <span>

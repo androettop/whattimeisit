@@ -51,8 +51,22 @@ h1 {
   white-space: pre-line;
 }
 
+p.change-phrase {
+  cursor: pointer;
+  color: rgba(0, 0, 0, 0.4);
+  user-select: none;
+  outline: none;
+}
+
 .accent {
   color: #67bc00;
+}
+
+.change-btn {
+  padding: 4px 16px;
+  border: 1px solid rgba(0, 0, 0, 0.4);;
+  border-radius: 4px;
+  margin: 0 4px;
 }
 
 /* footer */
