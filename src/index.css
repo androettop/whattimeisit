@@ -64,7 +64,7 @@ p.change-phrase {
 
 .change-btn {
   padding: 4px 16px;
-  border: 1px solid rgba(0, 0, 0, 0.4);;
+  border: 1px solid rgba(0, 0, 0, 0.4);
   border-radius: 4px;
   margin: 0 4px;
 }
@@ -106,6 +106,14 @@ footer span {
 .argMode footer a {
   text-shadow: 0 0 10px #323232;
   color: white;
+}
+
+/* aiMode */
+
+.aiMode {
+  background-image: url("./assets/aiMode.svg");
+  background-size: cover;
+  background-position: center;
 }
 
 /* media queries */

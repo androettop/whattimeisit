@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import {
   get6PMTimezone,
   getCountryOfTimezone,
@@ -6,62 +6,56 @@ import {
 } from "./helpers/dates";
 import { phrases } from "./helpers/phrases";
 import { MAGIC_NUMBER, NO_COUNTRY } from "./helpers/consts";
-import { getRandomPhrase } from "./helpers/random";
+import {
+  applyParamsToPhrase,
+  buildMessageObject,
+  getRandomPhrase,
+} from "./helpers/phraseProcessing";
 import { throttle } from "./helpers/throttle";
+import { typewriter } from "./helpers/typewriter";
+import useStaticHandler from "./hooks/useStaticHandler";
 
 function App() {
+  const [isAiMode, setIsAiMode] = useState<boolean>(false);
   const [timezone, setTimezone] = useState<string>(get6PMTimezone());
-  const [randomPhrase, setRandomPhrase] = useState<string>(getRandomPhrase());
+  const [randomPhrase, setRandomPhrase] = useState<string>("");
+  const [isArgMode, setIsArgMode] = useState<boolean>(false);
+  const intervalId = useRef<number | null>(null);
 
-  const country = getCountryOfTimezone(timezone);
+  const phraseParts = buildMessageObject(randomPhrase);
 
-  const time =
-    country === NO_COUNTRY ? `${MAGIC_NUMBER}:00` : getTimeOfTimezone(timezone);
+  const handleChangePhraseAndTimezone = useStaticHandler(() => {
+    const country = getCountryOfTimezone(timezone);
 
-  const parts = randomPhrase.split("%");
+    const time =
+      country === NO_COUNTRY
+        ? `${MAGIC_NUMBER}:00`
+        : getTimeOfTimezone(timezone);
 
-  const isArgMode = ["argentina", "islas malvinas"].includes(
-    country.toLowerCase(),
-  );
+    setIsArgMode(
+      ["argentina", "islas malvinas"].includes(country.toLowerCase()),
+    );
+    setTimezone(get6PMTimezone());
 
-  const elements = parts.map((part, index) => {
-    // if the part is even, it's a string
-    if (index % 2 === 0) {
-      return <span key={index}>{part}</span>;
-    }
-    // if the part is odd, it's a placeholder
-    else {
-      // replace the placeholder with the corresponding value
-      switch (part) {
-        case "time":
-          return (
-            <span key={index} className="accent">
-              {time}
-            </span>
-          );
-        case "country":
-          return (
-            <span key={index} className="accent">
-              {country}
-            </span>
-          );
-        default:
-          return null;
+    const newPhrase = applyParamsToPhrase(getRandomPhrase(), { country, time });
+    if (isAiMode) {
+      if (intervalId.current) {
+        clearInterval(intervalId.current);
       }
+      intervalId.current = typewriter(newPhrase, setRandomPhrase);
+    } else {
+      setRandomPhrase(newPhrase);
     }
   });
 
-  const handleChangePhraseAndTimezone = () => {
-    setRandomPhrase(getRandomPhrase());
-    setTimezone(get6PMTimezone());
-  };
-
   const throttledHandleChangePhraseAndTimezone = throttle(
     handleChangePhraseAndTimezone,
-    100,
+    50,
   );
 
   useEffect(() => {
+    handleChangePhraseAndTimezone();
+
     const phraseChangeHandler = (event: KeyboardEvent) => {
       if (event.code === "Space") {
         event.preventDefault();
@@ -75,21 +69,40 @@ function App() {
     };
   }, []);
 
+  const handleEnableAiMode = () => {
+    setIsAiMode(!isAiMode);
+    handleChangePhraseAndTimezone(!isAiMode);
+  };
+
   return (
-    <div className={`container ${isArgMode ? "argMode" : ""}`}>
+    <div
+      className={`container ${isArgMode ? "argMode" : ""} ${isAiMode ? "aiMode" : ""}`}
+    >
       <div className={`message-container`}>
         <h2 className="accent">What time is it?</h2>
-        <h1>{elements}</h1>
+        <h1>
+          {phraseParts.map((part) => (
+            <span key={part.id} className={part.accent ? "accent" : ""}>
+              {part.value}
+            </span>
+          ))}
+        </h1>
         <p
           className="change-phrase"
           role="button"
           tabIndex={0}
-          onClick={handleChangePhraseAndTimezone}
+          onClick={() => handleChangePhraseAndTimezone(isAiMode)}
         >
           Hit <span className="change-btn">Space</span> or Click
         </p>
       </div>
       <footer>
+        <span>
+          <a href="#" onClick={handleEnableAiMode}>
+            ✨ {isAiMode ? "Disable" : "Enable"} AI Mode
+          </a>
+        </span>
+        <span>|</span>
         <span>
           Share:
           <a
