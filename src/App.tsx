@@ -24,29 +24,37 @@ function App() {
 
   const phraseParts = buildMessageObject(randomPhrase);
 
-  const handleChangePhraseAndTimezone = useStaticHandler(() => {
-    const country = getCountryOfTimezone(timezone);
-
-    const time =
-      country === NO_COUNTRY
-        ? `${MAGIC_NUMBER}:00`
-        : getTimeOfTimezone(timezone);
-
-    setIsArgMode(
-      ["argentina", "islas malvinas"].includes(country.toLowerCase()),
-    );
-    setTimezone(get6PMTimezone());
-
-    const newPhrase = applyParamsToPhrase(getRandomPhrase(), { country, time });
-    if (isAiMode) {
+  const handleChangePhraseAndTimezone = useStaticHandler(
+    (forceAi?: boolean) => {
       if (intervalId.current) {
         clearInterval(intervalId.current);
       }
-      intervalId.current = typewriter(newPhrase, setRandomPhrase);
-    } else {
-      setRandomPhrase(newPhrase);
-    }
-  });
+
+      const country = getCountryOfTimezone(timezone);
+      const time =
+        country === NO_COUNTRY
+          ? `${MAGIC_NUMBER}:00`
+          : getTimeOfTimezone(timezone);
+
+      setIsArgMode(
+        ["argentina", "islas malvinas"].includes(country.toLowerCase()),
+      );
+      setTimezone(get6PMTimezone());
+
+      const newPhrase = applyParamsToPhrase(getRandomPhrase(), {
+        country,
+        time,
+      });
+
+      const useAiMode = typeof forceAi === "undefined" ? isAiMode : forceAi;
+
+      if (useAiMode) {
+        intervalId.current = typewriter(newPhrase, setRandomPhrase);
+      } else {
+        setRandomPhrase(newPhrase);
+      }
+    },
+  );
 
   const throttledHandleChangePhraseAndTimezone = throttle(
     handleChangePhraseAndTimezone,
@@ -69,9 +77,9 @@ function App() {
     };
   }, []);
 
-  const handleEnableAiMode = () => {
-    setIsAiMode(!isAiMode);
+  const handleToggleAiMode = () => {
     handleChangePhraseAndTimezone(!isAiMode);
+    setIsAiMode(!isAiMode);
   };
 
   return (
@@ -91,14 +99,14 @@ function App() {
           className="change-phrase"
           role="button"
           tabIndex={0}
-          onClick={() => handleChangePhraseAndTimezone(isAiMode)}
+          onClick={() => handleChangePhraseAndTimezone()}
         >
           Hit <span className="change-btn">Space</span> or Click
         </p>
       </div>
       <footer>
         <span>
-          <a href="#" onClick={handleEnableAiMode}>
+          <a href="#" onClick={handleToggleAiMode}>
             ✨ {isAiMode ? "Disable" : "Enable"} AI Mode
           </a>
         </span>
