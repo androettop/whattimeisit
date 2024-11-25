@@ -125,4 +125,12 @@ footer span {
   h2 {
     font-size: 1.5rem;
   }
+  footer {
+    display: flex;
+    flex-direction: column;
+    height: 6rem;
+  }
+  footer .divider {
+    display: none;
+  }
 }

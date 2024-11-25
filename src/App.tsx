@@ -102,7 +102,7 @@ function App() {
             ✨ {isAiMode ? "Disable" : "Enable"} AI Mode
           </a>
         </span>
-        <span>|</span>
+        <span className="divider">|</span>
         <span>
           Share:
           <a
@@ -120,7 +120,7 @@ function App() {
             Twitter
           </a>
         </span>
-        <span>|</span>
+        <span className="divider">|</span>
         <span>
           Source:
           <a
