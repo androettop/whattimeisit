@@ -14,8 +14,10 @@ import {
 import { throttle } from "./helpers/throttle";
 import { typewriter } from "./helpers/typewriter";
 import useStaticHandler from "./hooks/useStaticHandler";
+import { useTranslation } from "react-i18next";
 
 function App() {
+  const { t, i18n } = useTranslation();
   const [isAiMode, setIsAiMode] = useState<boolean>(false);
   const [timezone, setTimezone] = useState<string>(get6PMTimezone());
   const [randomPhrase, setRandomPhrase] = useState<string>("");
@@ -41,7 +43,8 @@ function App() {
       );
       setTimezone(get6PMTimezone());
 
-      const newPhrase = applyParamsToPhrase(getRandomPhrase(), {
+      const currentLanguage = i18n.language || "en";
+      const newPhrase = applyParamsToPhrase(getRandomPhrase(currentLanguage), {
         country,
         time,
       });
@@ -70,6 +73,7 @@ function App() {
         throttledHandleChangePhraseAndTimezone();
       }
     };
+
     window.addEventListener("keydown", phraseChangeHandler);
 
     return () => {
@@ -82,12 +86,32 @@ function App() {
     setIsAiMode(!isAiMode);
   };
 
+  const handleChangeLanguage = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    console.log("handleChangeLanguage");
+    console.log(e.target.value);
+    console.log(i18n.language);
+    console.log(i18n);
+    i18n.changeLanguage(e.target.value);
+    handleChangePhraseAndTimezone();
+  };
+
   return (
     <div
       className={`container ${isArgMode ? "argMode" : ""} ${isAiMode ? "aiMode" : ""}`}
     >
+      <div className="language-selector">
+        <label htmlFor="language-select">{t("changeLanguage")}</label>
+        <select
+          id="language-select"
+          onChange={handleChangeLanguage}
+          value={i18n.language}
+        >
+          <option value="en">English</option>
+          <option value="es">Español</option>
+        </select>
+      </div>
       <div className={`message-container`}>
-        <h2 className="accent">What time is it?</h2>
+        <h2 className="accent">{t("whatTimeIsIt")}</h2>
         <h1>
           {phraseParts.map((part) => (
             <span key={part.id} className={part.accent ? "accent" : ""}>
@@ -101,42 +125,42 @@ function App() {
           tabIndex={0}
           onClick={() => handleChangePhraseAndTimezone()}
         >
-          Hit <span className="change-btn">Space</span> or Click
+          <span dangerouslySetInnerHTML={{ __html: t("hitOrClick") }}></span>
         </p>
       </div>
       <footer>
         <span>
           <a href="#" onClick={handleToggleAiMode}>
-            ✨ {isAiMode ? "Disable" : "Enable"} AI Mode
+            {isAiMode ? t("disableAiMode") : t("enableAiMode")}
           </a>
         </span>
         <span className="divider">|</span>
         <span>
-          Share:
+          {t("share")}:
           <a
             href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwhattimeisit.surge.sh%2F&t=What%20time%20is%20it%3F"
             target="_blank"
             rel="noreferrer"
           >
-            Facebook
+            {t("facebook")}
           </a>
           <a
             href="https://twitter.com/intent/tweet?source=https%3A%2F%2Fwhattimeisit.surge.sh%2F&text=What%20time%20is%20it%3F:%20whattimeisit.surge.sh"
             target="_blank"
             rel="noreferrer"
           >
-            Twitter
+            {t("twitter")}
           </a>
         </span>
         <span className="divider">|</span>
         <span>
-          Source:
+          {t("source")}:
           <a
             href="https://github.com/androettop/whattimeisit"
             target="_blank"
             rel="noreferrer"
           >
-            Github
+            {t("github")}
           </a>
         </span>
       </footer>

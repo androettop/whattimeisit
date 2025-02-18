@@ -7,8 +7,9 @@ export type MessagePart = {
   value: string;
 };
 
-export const getRandomPhrase = (): string => {
-  return phrases[Math.floor(Math.random() * phrases.length)];
+export const getRandomPhrase = (language: string = "en"): string => {
+  const availablePhrases = phrases[language] || phrases["en"];
+  return availablePhrases[Math.floor(Math.random() * availablePhrases.length)];
 };
 
 export const applyParamsToPhrase = (
