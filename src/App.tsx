@@ -43,7 +43,7 @@ function App() {
       );
       setTimezone(get6PMTimezone());
 
-      const currentLanguage = i18n.language || "en";
+      const currentLanguage = i18n.language;
       const newPhrase = applyParamsToPhrase(getRandomPhrase(currentLanguage), {
         country,
         time,
@@ -87,10 +87,6 @@ function App() {
   };
 
   const handleChangeLanguage = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    console.log("handleChangeLanguage");
-    console.log(e.target.value);
-    console.log(i18n.language);
-    console.log(i18n);
     i18n.changeLanguage(e.target.value);
     handleChangePhraseAndTimezone();
   };
@@ -99,17 +95,6 @@ function App() {
     <div
       className={`container ${isArgMode ? "argMode" : ""} ${isAiMode ? "aiMode" : ""}`}
     >
-      <div className="language-selector">
-        <label htmlFor="language-select">{t("changeLanguage")}</label>
-        <select
-          id="language-select"
-          onChange={handleChangeLanguage}
-          value={i18n.language}
-        >
-          <option value="en">English</option>
-          <option value="es">Español</option>
-        </select>
-      </div>
       <div className={`message-container`}>
         <h2 className="accent">{t("whatTimeIsIt")}</h2>
         <h1>
@@ -125,7 +110,7 @@ function App() {
           tabIndex={0}
           onClick={() => handleChangePhraseAndTimezone()}
         >
-          <span dangerouslySetInnerHTML={{ __html: t("hitOrClick") }}></span>
+          {t("hit")} <span className="change-btn">{t("space")}</span> {t("click")}
         </p>
       </div>
       <footer>
@@ -136,21 +121,15 @@ function App() {
         </span>
         <span className="divider">|</span>
         <span>
-          {t("share")}:
-          <a
-            href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwhattimeisit.surge.sh%2F&t=What%20time%20is%20it%3F"
-            target="_blank"
-            rel="noreferrer"
-          >
-            {t("facebook")}
-          </a>
-          <a
-            href="https://twitter.com/intent/tweet?source=https%3A%2F%2Fwhattimeisit.surge.sh%2F&text=What%20time%20is%20it%3F:%20whattimeisit.surge.sh"
-            target="_blank"
-            rel="noreferrer"
-          >
-            {t("twitter")}
-          </a>
+          {t("changeLanguage")}:
+          <select
+          className="language-select"
+          onChange={handleChangeLanguage}
+          value={i18n.language}
+        >
+          <option value="en">English</option>
+          <option value="es">Español</option>
+        </select>
         </span>
         <span className="divider">|</span>
         <span>

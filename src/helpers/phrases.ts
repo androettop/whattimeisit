@@ -139,7 +139,6 @@ export const phrases: Record<string, string[]> = {
     "Trabajo no sos vos, soy yo...\n%time% en %country%.",
     "¿No te conto tu mamá de la nueva novela turca que está buenísima?\n%time% en %country%.",
     "¿After? Yendo no, llegando.\n%time% en %country%.",
-    "Como dijo Gokú: ¡Hasta la vista, Kakaroto (trabajo)!\n%time% en %country%.",
     "Si ves esto, es porque ya estoy desconectado.\n%time% en %country%.",
     "La silla de la oficina me extrañará, pero no es recíproco.\n%time% en %country%.",
     'Que nadie diga "reunión" porque hoy no hay.\n%time% en %country%.',

@@ -1,14 +1,13 @@
 {
     "welcome": "Welcome to our website",
-    "changeLanguage": "Change language",
+    "changeLanguage": "Language",
     "whatTimeIsIt": "What time is it?",
-    "hitOrClick": "Hit <span class='change-btn'>Space</span> or Click",
+    "hit": "Hit",
+    "space": "Space",
+    "click": "or Click",
     "enableAiMode": "✨ Enable AI Mode",
     "disableAiMode": "✨ Disable AI Mode",
-    "facebook": "Facebook",
-    "twitter": "Twitter",
     "source": "Source",
-    "github": "Github",
-    "share": "Share"
+    "github": "Github"
   }
   
