@@ -29,7 +29,6 @@ body {
 
 .message-container {
   width: 80%;
-
   max-width: 1400px;
   margin: auto;
 }
@@ -114,6 +113,17 @@ footer span {
   background-image: url("./assets/aiMode.svg");
   background-size: cover;
   background-position: center;
+}
+
+/* language selector */
+.language-select {
+  border: none;
+  color: #7e7e7e;
+  text-decoration: underline;
+  background: transparent;
+  font-family: "Manrope", sans-serif;
+  font-size: 1rem;
+  outline: none;
 }
 
 /* media queries */
