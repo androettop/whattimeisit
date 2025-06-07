@@ -181,7 +181,6 @@ export const phrases: Record<string, string[]> = {
     "È il momento di recuperare le serie TV:\n%time% in %country%.",
     "Niente più scadenze per oggi:\n%time% in %country%.",
     "RAGAZZIIII, è venerdì!\n%time% in %country%.",
-    "Hasta la vista, baby!\n%time% in %country%.",
     "Finalmente se n'è andato il tossico (il lavoro, ovviamente)!\n%time% in %country%.",
     "Che inizino i gossip!\n%time% in %country%.",
     "E ora... la magia della disconnessione!\n%time% in %country%.",
