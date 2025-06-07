@@ -130,6 +130,11 @@ function App() {
             <option value="en">English</option>
             <option value="es">Español</option>
             <option value="it">Italiano</option>
+            <option value="fr">Français</option>
+            <option value="de">Deutsch</option>
+            <option value="pt">Português</option>
+            <option value="zh">中文</option>
+            <option value="ja">日本語</option>
           </select>
         </span>
         <span className="divider">|</span>
