@@ -4,7 +4,6 @@ import {
   getCountryOfTimezone,
   getTimeOfTimezone,
 } from "./helpers/dates";
-import { phrases } from "./helpers/phrases";
 import { MAGIC_NUMBER, NO_COUNTRY } from "./helpers/consts";
 import {
   applyParamsToPhrase,
@@ -110,7 +109,8 @@ function App() {
           tabIndex={0}
           onClick={() => handleChangePhraseAndTimezone()}
         >
-          {t("hit")} <span className="change-btn">{t("space")}</span> {t("click")}
+          {t("hit")} <span className="change-btn">{t("space")}</span>{" "}
+          {t("click")}
         </p>
       </div>
       <footer>
@@ -123,13 +123,14 @@ function App() {
         <span>
           {t("changeLanguage")}:
           <select
-          className="language-select"
-          onChange={handleChangeLanguage}
-          value={i18n.language}
-        >
-          <option value="en">English</option>
-          <option value="es">Español</option>
-        </select>
+            className="language-select"
+            onChange={handleChangeLanguage}
+            value={i18n.language}
+          >
+            <option value="en">English</option>
+            <option value="es">Español</option>
+            <option value="it">Italiano</option>
+          </select>
         </span>
         <span className="divider">|</span>
         <span>
