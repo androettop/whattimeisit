@@ -9,8 +9,9 @@ import de from "./locales/de.json";
 import pt from "./locales/pt.json";
 import zh from "./locales/zh.json";
 import ja from "./locales/ja.json";
+import sim from "./locales/sim.json";
 
-const supportedLanguages = ["en", "es", "it", "fr", "de", "pt", "zh", "ja"];
+const supportedLanguages = ["en", "es", "it", "fr", "de", "pt", "zh", "ja", "sim"];
 
 const browserLanguage = navigator.language.split("-")[0];
 
@@ -28,6 +29,7 @@ i18n.use(initReactI18next).init({
     pt: { translation: pt },
     zh: { translation: zh },
     ja: { translation: ja },
+    sim: { translation: sim },
   },
   lng: defaultLanguage,
   fallbackLng: "en",
