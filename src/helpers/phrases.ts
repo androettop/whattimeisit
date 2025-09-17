@@ -6,6 +6,7 @@ import de from "../phrases/de.json";
 import pt from "../phrases/pt.json";
 import zh from "../phrases/zh.json";
 import ja from "../phrases/ja.json";
+import sim from "../phrases/sim.json";
 
 export const phrases: Record<string, string[]> = {
   en,
@@ -16,4 +17,5 @@ export const phrases: Record<string, string[]> = {
   pt,
   zh,
   ja,
+  sim,
 };
