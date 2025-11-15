@@ -8,5 +8,12 @@
   "enableAiMode": "✨ Activar Modo AI",
   "disableAiMode": "✨ Desactivar Modo AI",
   "source": "Fuente",
-  "github": "GitHub"
+  "github": "GitHub",
+  "seo": {
+    "title": "¿Qué hora es? - Descubre cuando son las 6 PM en cualquier parte del mundo",
+    "description": "Descubre qué hora es ahora en lugares donde actualmente son las 6 PM. Una aplicación web interactiva y multilingüe que explora las zonas horarias de todo el mundo con frases creativas.",
+    "keywords": "hora, 6pm, zona horaria, reloj mundial, husos horarios, hora internacional, qué hora es, hora actual, hora global",
+    "ogTitle": "¿Qué hora es? 🌍 Zonas Horarias Globales Interactivas",
+    "ogDescription": "Descubre cuando son las 6 PM en cualquier parte del mundo. Explorador interactivo de zonas horarias en 9 idiomas."
+  }
 }

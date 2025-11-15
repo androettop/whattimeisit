@@ -8,5 +8,12 @@
   "enableAiMode": "✨ KI-Modus aktivieren",
   "disableAiMode": "✨ KI-Modus deaktivieren",
   "source": "Quelle",
-  "github": "GitHub"
+  "github": "GitHub",
+  "seo": {
+    "title": "Wie spät ist es? - Finde heraus, wann es überall auf der Welt 18 Uhr ist",
+    "description": "Entdecke, wie spät es jetzt an Orten ist, an denen es gerade 18 Uhr ist. Eine interaktive, mehrsprachige Web-App, die Zeitzonen auf der ganzen Welt mit kreativen Phrasen erkundet.",
+    "keywords": "Zeit, 18 Uhr, Zeitzone, Weltzeituhr, Zeitzonen, internationale Zeit, wie spät ist es, aktuelle Zeit, globale Zeit",
+    "ogTitle": "Wie spät ist es? 🌍 Interaktive globale Zeitzonen",
+    "ogDescription": "Finde heraus, wann es überall auf der Welt 18 Uhr ist. Interaktiver Zeitzonen-Explorer in 9 Sprachen."
+  }
 }

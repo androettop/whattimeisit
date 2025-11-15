@@ -4,8 +4,46 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
-    <meta name="description" content="What time is it?" />
-    <title>What time is it?</title>
+    
+    <!-- Basic SEO -->
+    <meta name="description" content="Discover what time it is right now in places where it's currently 6 PM. An interactive, multilingual web app exploring time zones across the globe." />
+    <meta name="keywords" content="time, 6pm, timezone, world clock, time zones, international time, what time is it, current time, global time" />
+    <meta name="author" content="What Time Is It" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://whattimeisit.surge.sh/" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://whattimeisit.surge.sh/" />
+    <meta property="og:title" content="What Time Is It? 🌍 Interactive Global Time Zones" />
+    <meta property="og:description" content="Find out when it's 6 PM anywhere in the world. Interactive time zone explorer in 9 languages." />
+    <meta property="og:image" content="https://whattimeisit.surge.sh/og-image.png" />
+    <meta property="og:site_name" content="What Time Is It?" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:locale:alternate" content="es_ES" />
+    <meta property="og:locale:alternate" content="it_IT" />
+    <meta property="og:locale:alternate" content="fr_FR" />
+    <meta property="og:locale:alternate" content="de_DE" />
+    <meta property="og:locale:alternate" content="pt_BR" />
+    <meta property="og:locale:alternate" content="zh_CN" />
+    <meta property="og:locale:alternate" content="ja_JP" />
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://whattimeisit.surge.sh/" />
+    <meta name="twitter:title" content="What Time Is It? 🌍 Interactive Global Time Zones" />
+    <meta name="twitter:description" content="Find out when it's 6 PM anywhere in the world. Interactive time zone explorer in 9 languages." />
+    <meta name="twitter:image" content="https://whattimeisit.surge.sh/og-image.png" />
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    
+    <title>What Time Is It? - Find out when it's 6 PM anywhere in the world</title>
+    
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" asi />
     <link
@@ -14,6 +52,38 @@
       media="none"
       onload="if(media!='all')media='all'"
     />
+    
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "What Time Is It?",
+      "url": "https://whattimeisit.surge.sh/",
+      "description": "Interactive web application that shows what time it is in places where it's currently 6 PM. Available in 9 languages.",
+      "applicationCategory": "UtilityApplication",
+      "operatingSystem": "Any",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "inLanguage": ["en", "es", "it", "fr", "de", "pt", "zh", "ja"],
+      "browserRequirements": "Requires JavaScript",
+      "creator": {
+        "@type": "Organization",
+        "name": "What Time Is It",
+        "url": "https://github.com/androettop/whattimeisit"
+      },
+      "featureList": [
+        "Real-time timezone detection",
+        "9 language support",
+        "Interactive phrase generation",
+        "AI Mode with typewriter effect",
+        "Global timezone exploration"
+      ]
+    }
+    </script>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app, but it is 6pm.</noscript>

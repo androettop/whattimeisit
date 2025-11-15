@@ -55,6 +55,7 @@ p.change-phrase {
   color: rgba(0, 0, 0, 0.4);
   user-select: none;
   outline: none;
+  text-align: center;
 }
 
 .accent {

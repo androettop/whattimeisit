@@ -8,5 +8,12 @@
   "enableAiMode": "✨ Ativar Modo IA",
   "disableAiMode": "✨ Desativar Modo IA",
   "source": "Fonte",
-  "github": "GitHub"
+  "github": "GitHub",
+  "seo": {
+    "title": "Que horas são? - Descubra quando são 18h em qualquer lugar do mundo",
+    "description": "Descubra que horas são agora em lugares onde atualmente são 18h. Um aplicativo web interativo e multilíngue explorando fusos horários ao redor do mundo com frases criativas.",
+    "keywords": "hora, 18h, fuso horário, relógio mundial, fusos horários, hora internacional, que horas são, hora atual, hora global",
+    "ogTitle": "Que horas são? 🌍 Fusos Horários Globais Interativos",
+    "ogDescription": "Descubra quando são 18h em qualquer lugar do mundo. Explorador interativo de fusos horários em 9 idiomas."
+  }
 }

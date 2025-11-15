@@ -8,5 +8,12 @@
   "enableAiMode": "✨ Abilita la modalità AI",
   "disableAiMode": "✨ Disabilita modalità AI",
   "source": "Fonte",
-  "github": "GitHub"
+  "github": "GitHub",
+  "seo": {
+    "title": "Che ora è? - Scopri quando sono le 18:00 in qualsiasi parte del mondo",
+    "description": "Scopri che ora è adesso nei luoghi dove attualmente sono le 18:00. Un'app web interattiva e multilingue che esplora i fusi orari di tutto il mondo con frasi creative.",
+    "keywords": "ora, 18:00, fuso orario, orologio mondiale, fusi orari, ora internazionale, che ora è, ora attuale, ora globale",
+    "ogTitle": "Che ora è? 🌍 Fusi Orari Globali Interattivi",
+    "ogDescription": "Scopri quando sono le 18:00 in qualsiasi parte del mondo. Esploratore interattivo di fusi orari in 9 lingue."
+  }
 }
