@@ -8,12 +8,5 @@
   "enableAiMode": "✨ 启用AI模式",
   "disableAiMode": "✨ 禁用AI模式",
   "source": "来源",
-  "github": "GitHub",
-  "seo": {
-    "title": "现在几点？- 探索世界各地下午6点的时间",
-    "description": "发现当前时间为下午6点的地方现在是几点。一个交互式多语言网络应用，用创意短语探索全球时区。",
-    "keywords": "时间, 下午6点, 时区, 世界时钟, 时区, 国际时间, 现在几点, 当前时间, 全球时间",
-    "ogTitle": "现在几点？🌍 互动全球时区",
-    "ogDescription": "探索世界各地下午6点的时间。支持9种语言的交互式时区浏览器。"
-  }
+  "github": "GitHub"
 }

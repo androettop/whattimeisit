@@ -8,12 +8,5 @@
   "enableAiMode": "✨ Enable AI Mode",
   "disableAiMode": "✨ Disable AI Mode",
   "source": "Source",
-  "github": "GitHub",
-  "seo": {
-    "title": "What Time Is It? - Find out when it's 6 PM anywhere in the world",
-    "description": "Discover what time it is right now in places where it's currently 6 PM. An interactive, multilingual web app exploring time zones across the globe with creative phrases.",
-    "keywords": "time, 6pm, timezone, world clock, time zones, international time, what time is it, current time, global time",
-    "ogTitle": "What Time Is It? 🌍 Interactive Global Time Zones",
-    "ogDescription": "Find out when it's 6 PM anywhere in the world. Interactive time zone explorer in 9 languages."
-  }
+  "github": "GitHub"
 }

@@ -14,7 +14,6 @@ import { throttle } from "./helpers/throttle";
 import { typewriter } from "./helpers/typewriter";
 import useStaticHandler from "./hooks/useStaticHandler";
 import { useTranslation } from "react-i18next";
-import SEOHead from "./components/SEOHead";
 
 function App() {
   const { t, i18n } = useTranslation();
@@ -25,6 +24,9 @@ function App() {
   const intervalId = useRef<number | null>(null);
 
   const phraseParts = buildMessageObject(randomPhrase);
+
+  const URL = import.meta.env.VITE_APP_URL || "https://whattimeisit.surge.sh/";
+  const IMAGE = import.meta.env.VITE_APP_IMAGE || "https://whattimeisit.surge.sh/og-image.png";
 
   const handleChangePhraseAndTimezone = useStaticHandler(
     (forceAi?: boolean) => {
@@ -88,77 +90,73 @@ function App() {
 
   const handleChangeLanguage = (e: React.ChangeEvent<HTMLSelectElement>) => {
     i18n.changeLanguage(e.target.value);
+    window.document.title = t("whatTimeIsIt");
+    window.document.querySelector('meta[property="og:url"]')?.setAttribute('content', URL);
+    window.document.querySelector('meta[property="og:image"]')?.setAttribute('content', IMAGE);
     handleChangePhraseAndTimezone();
   };
 
   return (
-    <>
-      <SEOHead />
-      <div
-        className={`container ${isArgMode ? "argMode" : ""} ${isAiMode ? "aiMode" : ""}`}
-      >
-        <main className={`message-container`}>
-          <header>
-            <h2 className="accent">{t("whatTimeIsIt")}</h2>
-          </header>
-          <article>
-            <h1>
-              {phraseParts.map((part) => (
-                <span key={part.id} className={part.accent ? "accent" : ""}>
-                  {part.value}
-                </span>
-              ))}
-            </h1>
-            <p
-              className="change-phrase"
-              role="button"
-              tabIndex={0}
-              onClick={() => handleChangePhraseAndTimezone()}
-            >
-              {t("hit")} <span className="change-btn">{t("space")}</span>{" "}
-              {t("click")}
-            </p>
-          </article>
-        </main>
-        <footer>
-          <span>
-            <a href="#" onClick={handleToggleAiMode}>
-              {isAiMode ? t("disableAiMode") : t("enableAiMode")}
-            </a>
-          </span>
-          <span className="divider">|</span>
-          <span>
-            {t("changeLanguage")}:
-            <select
-              className="language-select"
-              onChange={handleChangeLanguage}
-              value={i18n.language}
-            >
-              <option value="en">English</option>
-              <option value="es">Español</option>
-              <option value="it">Italiano</option>
-              <option value="fr">Français</option>
-              <option value="de">Deutsch</option>
-              <option value="pt">Português</option>
-              <option value="zh">中文</option>
-              <option value="ja">日本語</option>
-              <option value="sim">Simlish</option>
-            </select>
-          </span>
-          <span className="divider">|</span>
-          <span>
-            {t("source")}:
-            <a
-              href="https://github.com/androettop/whattimeisit"
-              target="_blank"
-              rel="noreferrer"
-            >
-              {t("github")}
-            </a>
-          </span>
-        </footer>
+    <div
+      className={`container ${isArgMode ? "argMode" : ""} ${isAiMode ? "aiMode" : ""}`}
+    >
+      <div className={`message-container`}>
+        <h2 className="accent">{t("whatTimeIsIt")}</h2>
+        <h1>
+          {phraseParts.map((part) => (
+            <span key={part.id} className={part.accent ? "accent" : ""}>
+              {part.value}
+            </span>
+          ))}
+        </h1>
+        <p
+          className="change-phrase"
+          role="button"
+          tabIndex={0}
+          onClick={() => handleChangePhraseAndTimezone()}
+        >
+          {t("hit")} <span className="change-btn">{t("space")}</span>{" "}
+          {t("click")}
+        </p>
       </div>
-    </>
+      <footer>
+        <span>
+          <a href="#" onClick={handleToggleAiMode}>
+            {isAiMode ? t("disableAiMode") : t("enableAiMode")}
+          </a>
+        </span>
+        <span className="divider">|</span>
+        <span>
+          {t("changeLanguage")}:
+          <select
+            className="language-select"
+            onChange={handleChangeLanguage}
+            value={i18n.language}
+          >
+            <option value="en">English</option>
+            <option value="es">Español</option>
+            <option value="it">Italiano</option>
+            <option value="fr">Français</option>
+            <option value="de">Deutsch</option>
+            <option value="pt">Português</option>
+            <option value="zh">中文</option>
+            <option value="ja">日本語</option>
+            <option value="sim">Simlish</option>
+          </select>
+        </span>
+        <span className="divider">|</span>
+        <span>
+          {t("source")}:
+          <a
+            href="https://github.com/androettop/whattimeisit"
+            target="_blank"
+            rel="noreferrer"
+          >
+            {t("github")}
+          </a>
+        </span>
+      </footer>
+    </div>
   );
 }
 

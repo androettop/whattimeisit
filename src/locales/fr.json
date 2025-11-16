@@ -8,12 +8,5 @@
   "enableAiMode": "✨ Activer le mode IA",
   "disableAiMode": "✨ Désactiver le mode IA",
   "source": "Source",
-  "github": "GitHub",
-  "seo": {
-    "title": "Quelle heure est-il? - Découvrez quand il est 18h n'importe où dans le monde",
-    "description": "Découvrez quelle heure il est maintenant dans les endroits où il est actuellement 18h. Une application web interactive et multilingue explorant les fuseaux horaires du monde entier avec des phrases créatives.",
-    "keywords": "heure, 18h, fuseau horaire, horloge mondiale, fuseaux horaires, heure internationale, quelle heure est-il, heure actuelle, heure mondiale",
-    "ogTitle": "Quelle heure est-il? 🌍 Fuseaux Horaires Mondiaux Interactifs",
-    "ogDescription": "Découvrez quand il est 18h n'importe où dans le monde. Explorateur interactif de fuseaux horaires en 9 langues."
-  }
+  "github": "GitHub"
 }
