@@ -64,6 +64,7 @@ function App() {
   );
 
   useEffect(() => {
+    handleTitleUpdate();
     handleChangePhraseAndTimezone();
 
     const phraseChangeHandler = (event: KeyboardEvent) => {
@@ -85,8 +86,13 @@ function App() {
     setIsAiMode(!isAiMode);
   };
 
+  const handleTitleUpdate = () => {
+    window.document.title = t("whatTimeIsIt");
+  };
+
   const handleChangeLanguage = (e: React.ChangeEvent<HTMLSelectElement>) => {
     i18n.changeLanguage(e.target.value);
+    handleTitleUpdate();
     handleChangePhraseAndTimezone();
   };
 

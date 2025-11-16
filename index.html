@@ -4,16 +4,69 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
-    <meta name="description" content="What time is it?" />
+    
+    <!-- Basic SEO -->
+    <meta name="description" content="What time is it? Find out if it's time to stop working and relax" />
+    <meta name="keywords" content="time, working, working time, work, world clock, time zones, international time, what time is it, current time, global time" />
+    <meta name="author" content="androettop" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://whattimeisit.surge.sh/" />
+    <meta property="og:title" content="What time is it?" />
+    <meta property="og:description" content="Find out if it's time to stop working and relax" />
+    <meta property="og:image" content="https://whattimeisit.surge.sh/og-image.png" />
+    <meta property="og:site_name" content="What time is it?" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:locale:alternate" content="es_ES" />
+    <meta property="og:locale:alternate" content="it_IT" />
+    <meta property="og:locale:alternate" content="fr_FR" />
+    <meta property="og:locale:alternate" content="de_DE" />
+    <meta property="og:locale:alternate" content="pt_BR" />
+    <meta property="og:locale:alternate" content="zh_CN" />
+    <meta property="og:locale:alternate" content="ja_JP" />
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    
     <title>What time is it?</title>
+    
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" asi />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link
       href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;800&display=swap"
       rel="stylesheet"
       media="none"
       onload="if(media!='all')media='all'"
     />
+    
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "What time is it?",
+      "url": "https://whattimeisit.surge.sh/",
+      "description": "Find out if it's time to stop working and relax",
+      "applicationCategory": "UtilityApplication",
+      "operatingSystem": "Any",
+      "inLanguage": ["en", "es", "it", "fr", "de", "pt", "zh", "ja"],
+      "browserRequirements": "Requires JavaScript",
+      "creator": {
+        "@type": "Organization",
+        "name": "androettop",
+        "url": "https://github.com/androettop/whattimeisit"
+      },
+      "featureList": [
+        "Real-time timezone detection",
+        "9 language support",
+        "Interactive phrase generation",
+        "AI Mode with typewriter effect",
+        "Global timezone exploration"
+      ]
+    }
+    </script>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app, but it is 6pm.</noscript>
