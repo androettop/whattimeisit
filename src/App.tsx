@@ -25,9 +25,6 @@ function App() {
 
   const phraseParts = buildMessageObject(randomPhrase);
 
-  const URL = import.meta.env.VITE_APP_URL || "https://whattimeisit.surge.sh/";
-  const IMAGE = import.meta.env.VITE_APP_IMAGE || "https://whattimeisit.surge.sh/og-image.png";
-
   const handleChangePhraseAndTimezone = useStaticHandler(
     (forceAi?: boolean) => {
       if (intervalId.current) {
@@ -67,6 +64,7 @@ function App() {
   );
 
   useEffect(() => {
+    handleTitleUpdate();
     handleChangePhraseAndTimezone();
 
     const phraseChangeHandler = (event: KeyboardEvent) => {
@@ -88,11 +86,13 @@ function App() {
     setIsAiMode(!isAiMode);
   };
 
+  const handleTitleUpdate = () => {
+    window.document.title = t("whatTimeIsIt");
+  };
+
   const handleChangeLanguage = (e: React.ChangeEvent<HTMLSelectElement>) => {
     i18n.changeLanguage(e.target.value);
-    window.document.title = t("whatTimeIsIt");
-    window.document.querySelector('meta[property="og:url"]')?.setAttribute('content', URL);
-    window.document.querySelector('meta[property="og:image"]')?.setAttribute('content', IMAGE);
+    handleTitleUpdate();
     handleChangePhraseAndTimezone();
   };
 
